@@ -3,10 +3,10 @@ const {
   ProductNotFoundException,
   ProductEmptyEntity,
 } = require('../../exceptions')
-const ProductService = require('../../services/products/products.service')
+const productService = require('../../services/products/products.service')
 
 const router = express.Router()
-const productService = new ProductService()
+
 // Servicio de productos injectado en el objeto request, lo hace global a cada request
 router.use((req, res, next) => {
   req.service = productService
@@ -33,7 +33,7 @@ router.post('/', (req, res) => {
   const created = req.service.create(product)
 
   // Devolvemos la respuesta satisfactoria
-  res.status(201).json(created)
+  res.redirect('/')
 })
 
 router.put('/:id', (req, res) => {
