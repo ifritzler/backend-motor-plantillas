@@ -3,6 +3,7 @@ const router = require('../routes')
 const errorResponseMiddleware = require('../middlewares/errorResponseHandler')
 const productService = require('../services/products/products.service')
 const configHandlebars = require('./handlebars')
+const configPug = require('./pug')
 require('dotenv').config()
 
 const app = express()
@@ -12,14 +13,15 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // Handlebars config
-configHandlebars(app)
+// configHandlebars(app)
+configPug(app)
 
 // Routers
 app.use('/api', router)
 
 // Main Route
 app.get('/', (_req, res) => {
-  res.render('index', {})
+  res.render('index', { title: 'Hey', message: 'Hello world' })
 })
 
 app.get('/products', (_req, res) => {

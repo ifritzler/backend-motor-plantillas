@@ -1,0 +1,25 @@
+include layouts/main.pug
+div(class='row')
+  div(class='col-6 mx-auto')
+    a(href='/')
+      button(type='button' class='btn btn-primary mb-3') Inicio
+    div(class='col')
+
+      if hasContent
+        table(class='table')
+          thead
+            tr
+              th(scope='col') #
+              th(scope='col') Titulo
+              th(scope='col') Precio
+              th(scope='col') Imagen
+          tbody(id='table-content')
+            each product in products
+              tr
+                th(scope='row')= product.id
+                td= product.title
+                td= product.price
+                td 
+                  a(href= product.thumbnail) Link a la imagen
+      else
+        <p>Aun no hay productos cargados</p>

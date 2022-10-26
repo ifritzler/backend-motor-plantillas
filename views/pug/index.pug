@@ -1,0 +1,43 @@
+include layouts/main.pug
+hr
+div
+  div(class='row')
+    div(class='col-6 mx-auto')
+      h3 Crear Producto
+      form(
+        id='formulario-crear-producto'
+        action='/api/products'
+        method='POST'
+      )
+        div(class='mb-)3')
+          label(for='title' class='form-label') Titulo
+          input(
+            type='text'
+            class='form-control'
+            id='title'
+            name='title'
+            placeholder='Ingrese el titulo del articulo'
+          )
+        div(class='mb-3')
+          label(for='price' class='form-label') Precio
+          div(class='input-group mb-3')
+            span(class='input-group-text') $
+            input(
+              name='price'
+              type='number'
+              class='form-control'
+              aria-label='Precio'
+            )
+        div(class='mb-3')
+          label(for='thumbnail' class='form-label') URL Imagen
+          input(
+            type='text'
+            class='form-control'
+            id='thumbnail'
+            name='thumbnail'
+            placeholder='Ingrese la url de la imagen'
+          )
+        div(class='col-auto d-flex justify-content-between')
+          button(type='submit' class='btn btn-primary mb-3') Guardar
+          a(href='/products')
+            button(type='button' class='btn btn-primary mb-3') Ver productos
