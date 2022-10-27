@@ -1,4 +1,4 @@
-const app = require('./src/config')
+const app = require('./src/app')
 const PORT = process.env.PORT || 3001
 
 app.get('/', (req, res) =>
